@@ -1,0 +1,526 @@
+/* ================= VARIABLES DE COULEURS ================= */
+:root {
+    --bg-main: #141414;       /* Fond principal (Noir/Gris très foncé) */
+    --text-main: #ede8ca;     /* Texte principal (Beige clair) */
+    --accent-dark: #6e6b5b;   /* Nuance foncée (Bordures, détails) */
+    --accent-light: #94917b;  /* Nuance claire (Survols, textes secondaires) */
+    --white: #ffffff;         /* Blanc pur pour les titres et éléments actifs */
+}
+
+/* ================= RESET ET BASES ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* 1. La couleur de fond de secours (si l'image met du temps à charger) */
+    background-color: var(--bg-main);
+    
+    /* 2. L'image avec un filtre sombre par-dessus pour la lisibilité */
+    /* On utilise rgba(20, 20, 20, 0.85) -> c'est ton noir avec 85% d'opacité */
+    background-image: 
+        linear-gradient(rgba(20, 20, 20, 0.85), rgba(20, 20, 20, 0.95)), 
+        url('./images/fond.jpg');
+    
+    /* 3. Les réglages pour que l'image soit parfaite */
+    background-size: cover;          /* L'image couvre tout l'écran sans se déformer */
+    background-position: center;     /* L'image est centrée */
+    background-attachment: fixed;    /* Effet Parallax : l'image reste fixe quand tu défiles vers le bas ! */
+    background-repeat: no-repeat;    /* L'image ne se répète pas comme une mosaïque */
+    
+    /* Le reste de tes réglages body ne change pas */
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ================= EN-TÊTE ET BOUTON LOGO FIXE ================= */
+/* J'aimerais retirer cette barre qui reste en haut... */
+/* ...et avoir le menu hamburger en transparence en haut à gauche... descend avec la page --> position: fixed; background: transparent; top: 20px; left: 20px; */
+/* ...représenter par notre logo --> .logo-btn-image */
+
+header {
+    /* MODIFICATION : Suppression des styles de barre fixe et noire. */
+    position: static; 
+    padding: 0;
+    background-color: transparent;
+    border-bottom: none;
+    z-index: 10;
+}
+
+/* Classe spécifique pour le nouvel en-tête flottant et transparent. */
+.header-transparent {
+    position: absolute; /* Reste en haut du défilement */
+    top: 0;
+    left: 0;
+    width: auto; /* Ne couvre pas toute la largeur */
+    padding: 20px 5%; /* Conserve un rembourrage pour le logo */
+    z-index: 1001; /* Doit être au-dessus du contenu et de l'overlay */
+}
+
+.hamburger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Ajout d'une transition fluide */
+    position: fixed; 
+    top: 20px; 
+    left: 5%; 
+}
+
+.hamburger-btn:hover {
+    opacity: 0.8;
+}
+
+/* NOUVEAU : La classe ajoutée par le JS pour faire disparaître le bouton */
+.hamburger-btn.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Empêche de cliquer dans le vide */
+}
+
+/* Taille du logo flottant (Accueil) */
+.logo-btn-image {
+    width: 120px; /* Au lieu de height 40px. Tu peux monter à 150px si besoin */
+    height: auto; /* Garde les bonnes proportions */
+    display: block;
+}
+
+/* Le texte .logo distinct est supprimé du HTML, donc inutile de styliser. */
+
+/* ================= MENU LATÉRAL (SIDEBAR) ================= */
+.sidebar {
+    height: 100vh;
+    width: 320px;
+    position: fixed;
+    top: 0;
+    left: -320px; /* Caché hors de l'écran par défaut */
+    background-color: var(--bg-main);
+    border-right: 1px solid var(--accent-dark);
+    transition: left 0.4s ease-in-out;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.active {
+    left: 0; /* Apparaît quand le JS ajoute la classe .active */
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px; 
+    border-bottom: 1px solid var(--accent-dark);
+}
+
+/* Taille du logo dans le menu latéral */
+.sidebar-logo {
+    width: 140px; /* Beaucoup plus grand pour habiller le menu */
+    height: auto;
+    display: block;
+}
+
+/* Suppression des styles pour .sidebar-header h2 car remplacé par l'image. */
+
+.close-btn {
+    font-size: 32px;
+    background: none;
+    border: none;
+    color: var(--accent-light);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: var(--white);
+}
+
+.nav-links {
+    list-style: none;
+    padding: 20px 0;
+    flex-grow: 1;
+}
+
+.nav-links li {
+    padding: 5px 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 18px;
+    color: var(--text-main);
+    display: block;
+    padding: 10px 0;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--white);
+    font-weight: 600;
+    padding-left: 10px; /* Petit décalage élégant au survol */
+}
+
+/* ================= OVERLAY (FOND SOMBRE) ================= */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ================= CONTENU PRINCIPAL ================= */
+main {
+    min-height: calc(100vh - 200px); /* S'assure que le footer reste en bas */
+}
+
+/* --- Section Hero --- */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    /* Conserve le dégradé du hero pour qu'il soit visible derrière le logo transparent. */
+    background: linear-gradient(180deg, rgba(20,20,20,1) 0%, rgba(40,39,33,0.3) 100%);
+    border-bottom: 1px solid var(--accent-dark);
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 42px;
+    color: var(--white);
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+.hero p {
+    font-size: 20px;
+    color: var(--accent-light);
+    font-weight: 400;
+}
+
+/* --- Section Histoire --- */
+.about-us {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.about-us h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: var(--white);
+    text-align: center;
+    position: relative;
+}
+
+/* Petit trait décoratif sous le titre */
+.about-us h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-light);
+    margin: 15px auto 0;
+}
+
+.story-container p {
+    margin-bottom: 25px;
+    font-size: 16px;
+    color: var(--text-main);
+    text-align: justify;
+}
+
+.story-container strong {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.story-container em {
+    color: var(--accent-light);
+    font-style: italic;
+}
+
+/* ================= PIED DE PAGE ================= */
+footer {
+    background-color: #0f0f0f;
+    border-top: 1px solid var(--accent-dark);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.footer-links a {
+    color: var(--accent-light);
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--white);
+}
+
+.copyright {
+    font-size: 13px;
+    color: var(--accent-dark);
+}
+
+/* ================= RESPONSIVE (MOBILES) ================= */
+@media screen and (max-width: 768px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+
+    .sidebar {
+        width: 280px;
+        left: -280px;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    /* MODIFICATION : Ajustements pour le bouton logo mobile. */
+    .hamburger-btn {
+        top: 15px; /* Un peu plus haut sur mobile */
+        left: 15px; /* Un peu plus à gauche sur mobile */
+    }
+    
+    .logo-btn-image {
+        height: 35px; /* Un peu plus petit sur mobile */
+    }
+}
+
+/* ================= PAGE NOS MEMBRES ================= */
+
+/* Ajoute le défilement fluide pour les ancres sur tout le site */
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- En-tête de la page Membres --- */
+.page-header {
+    text-align: center;
+    padding: 100px 20px 40px;
+    border-bottom: 1px solid var(--accent-dark);
+}
+
+.page-header h1 {
+    font-size: 42px;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.intro-text {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 18px;
+    color: var(--text-main);
+}
+
+/* ================= PAGE NOS MEMBRES ================= */
+
+/* Ajoute le défilement fluide pour les ancres sur tout le site */
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- Liens dans les textes --- */
+.inline-link {
+    color: var(--accent-light);
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.inline-link:hover {
+    color: var(--white);
+}
+
+/* --- Boutons d'ancrage (Hero Membres) --- */
+.hero-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Permet aux boutons de passer à la ligne proprement sur mobile */
+}
+
+.anchor-link {
+    display: inline-block;
+    padding: 8px 25px; /* Un peu plus allongé et moins épais */
+    background-color: transparent;
+    border: 1px solid var(--accent-light);
+    color: var(--accent-light);
+    text-decoration: none;
+    border-radius: 6px; /* Des coins légèrement arrondis, beaucoup moins "boule" */
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.anchor-link:hover {
+    color: var(--white);
+    border-color: var(--white);
+    background-color: rgba(255, 255, 255, 0.05); /* Un très léger voile blanc au survol */
+}
+
+/* --- Section des Listes (Actifs / Invités) --- */
+/* (Le reste de ton CSS pour les membres reste identique en dessous...) */
+
+/* --- Section des Listes (Actifs / Invités) --- */
+.members-section {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.members-section h2 {
+    font-size: 32px;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 20px; /* Espace pour l'ancre lors du scroll */
+}
+
+.members-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* --- La Carte Membre (Bloc rectangulaire) --- */
+.member-card {
+    display: flex;
+    align-items: center;
+    background-color: rgba(30, 30, 30, 0.6); /* Fond légèrement plus clair que le body */
+    border: 1px solid var(--accent-dark);
+    border-radius: 15px;
+    padding: 20px;
+    text-decoration: none; /* Enlève le souligné pour les liens */
+    color: var(--text-main);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ALTERNANCE GAUCHE/DROITE AUTOMATIQUE */
+/* Une carte sur deux (pair) inverse le sens d'affichage (image à droite) */
+.member-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* On aligne le texte vers l'image pour un meilleur rendu visuel */
+.member-card:nth-child(even) .member-info {
+    text-align: right;
+}
+
+/* L'avatar tourne autour de l'axe vertical (scaleX) pour regarder vers le texte. */
+.member-card:nth-child(odd) .member-avatar {
+    transform: scaleX(-1);
+    filter: drop-shadow(-5px 5px 10px rgba(0,0,0,0.5)); /* Ajustement de l'ombre portée pour qu'elle suive l'inversion */
+}
+
+.member-avatar {
+    width: 150px;
+    height: 150px;
+    object-fit: contain; /* S'assure que l'avatar ne soit pas écrasé */
+    border-radius: 50%; /* Arrondi parfait s'ils ne sont pas déjà détourés */
+    background-color: var(--bg-main); /* Fond sombre au cas où l'image a de la transparence */
+    border: 2px solid var(--accent-dark);
+    flex-shrink: 0;
+}
+
+.member-info {
+    padding: 0 30px;
+    flex-grow: 1;
+}
+
+.member-info h3 {
+    color: var(--white);
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.member-info p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Effets pour les cartes CLIQUABLES (Membres) */
+.member-card.clickable:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-light);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    background-color: rgba(40, 40, 40, 0.8);
+}
+
+.member-card.clickable h3 {
+    position: relative;
+    display: inline-block;
+}
+
+/* Ajoute une petite flèche discrète aux membres cliquables */
+.member-card.clickable h3::after {
+    content: ' →';
+    opacity: 0;
+    transition: opacity 0.3s, margin-left 0.3s;
+    color: var(--accent-light);
+}
+
+.member-card.clickable:hover h3::after {
+    opacity: 1;
+    margin-left: 5px;
+}
+
+/* ================= RESPONSIVE MOBILES ================= */
+@media screen and (max-width: 768px) {
+    /* Sur téléphone, on empile l'image et le texte de haut en bas */
+    .member-card, .member-card:nth-child(even) {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 15px;
+    }
+    
+    .member-card:nth-child(even) .member-info {
+        text-align: center;
+    }
+
+    .member-avatar {
+        margin-bottom: 20px;
+    }
+
+    .member-info {
+        padding: 0;
+    }
+}
