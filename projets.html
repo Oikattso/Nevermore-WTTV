@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-width=1.0">
+    <meta name="description" content="Découvrez les projets du collectif Nevermore : Émissions WebTV, équipe Esport Overwatch et serveurs communautaires.">
+    <title>Nos Projets | Nevermore</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav id="sidebar" class="sidebar" aria-label="Menu principal">
+        <div class="sidebar-header">
+            <img src="./images/collectif/logo.png" alt="Nevermore Logo" class="sidebar-logo">
+            <button id="close-btn" class="close-btn" aria-label="Fermer le menu">&times;</button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">L'accueil</a></li>
+            <li><a href="membres.html">Nos Membres</a></li>
+            <li><a href="projets.html" class="active">Nos Projets</a></li>
+            <li><a href="agenda.html">Notre Agenda</a></li>
+            <li><a href="contact.html">Nos Réseaux & Contact</a></li>
+            <li><a href="soutien.html">Nous soutenir</a></li>
+        </ul>
+    </nav>
+    <div id="overlay" class="overlay"></div>
+
+    <header class="header-transparent">
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Ouvrir le menu">
+            <img src="./images/collectif/logo.png" alt="Nevermore Logo" class="logo-btn-image">
+        </button>
+    </header>
+
+    <main id="main-content">
+        
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Nos Projets</h1>
+                <p>
+                    Au-delà des streams individuels, Nevermore c'est aussi des projets de groupe. De la WebTV à l'Esport, découvrez ce sur quoi on bosse !
+                </p>
+                <div class="hero-buttons">
+                    <a href="#emissions" class="anchor-link">Émissions WebTV</a>
+                    <a href="#esport" class="anchor-link">Pôle Esport</a>
+                    <a href="#communaute" class="anchor-link">Projets Communautaires</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="emissions" class="projects-section">
+            <h2>Émissions WebTV</h2>
+            
+            <div class="projects-container">
+                <div class="project-card">
+                    <img src="./images/projets/manga-sunday.png" alt="Logo Manga Sunday" class="project-image">
+                    <div class="project-info">
+                        <h3>Manga Sunday</h3>
+                        <p>
+                            Le rendez-vous incontournable pour tous les passionnés de culture nippone ! Dans cette émission talk-show, l'équipe se réunit pour présenter, débattre et analyser des œuvres issues du milieu manga et de l'animation. Que ce soit pour des classiques intemporels ou des pépites méconnues, on décortique tout avec passion (et un peu de mauvaise foi).
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag-label">Casting (rotatif) :</span>
+                            <span class="tag">Fawks</span>
+                            <span class="tag">Okami</span>
+                            <span class="tag">Aka</span>
+                            <span class="tag">Shig</span>
+                            <span class="tag">LaVariante</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="esport" class="projects-section">
+            <h2>Pôle Esport</h2>
+            
+            <div class="projects-container">
+                <div class="project-card">
+                    <img src="./images/projets/overwatch-esport.png" alt="Logo Overwatch Esport" class="project-image">
+                    <div class="project-info">
+                        <h3>Équipe Overwatch</h3>
+                        <p>
+                            Le cœur originel du projet Nevermore. Bien que notre format ait évolué vers la WebTV, notre ADN compétitif reste intact. Notre roster Overwatch continue de s'entraîner et de s'aligner sur divers tournois pour porter nos couleurs au plus haut niveau.
+                        </p>
+                        <a href="equipe-overwatch.html" class="action-btn">Découvrir le Roster Esport →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="communaute" class="projects-section">
+            <h2>Projets Communautaires</h2>
+            
+            <div class="projects-container">
+                <div class="project-card">
+                    <img src="./images/projets/minecraft-solo-leveling.png" alt="Logo Serveur Minecraft Solo Leveling" class="project-image">
+                    <div class="project-info">
+                        <h3>Serveur Minecraft : Solo Leveling</h3>
+                        <p>
+                            Un projet ambitieux développé et géré de A à Z par <strong>Fawks</strong>. Ce serveur Minecraft propose une expérience Semi-RP unique, basée sur un modpack entièrement personnalisé. Plongez dans l'univers impitoyable de <em>Solo Leveling</em>, affrontez des donjons, montez en grade et forgez votre propre légende aux côtés de la communauté.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag-label">Géré par :</span>
+                            <span class="tag">Fawks</span>
+                        </div>
+                        <a href="TON_LIEN_DISCORD_ICI" target="_blank" rel="noopener noreferrer" class="action-btn" style="margin-top: 15px;">Rejoindre le Discord dédié →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <nav class="footer-links">
+            <a href="mentions-legales.html">Mentions légales</a>
+            <a href="kit-presse.html">Kit Presse</a>
+            <a href="statistiques.html">Statistiques</a>
+            <a href="chartes-valeurs.html">Chartes graphiques & Nos Valeurs</a>
+        </nav>
+        <p class="copyright">&copy; 2026 Nevermore Collectif. Tous droits réservés.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
