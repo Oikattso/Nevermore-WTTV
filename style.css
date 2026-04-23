@@ -524,3 +524,159 @@ html {
         padding: 0;
     }
 }
+
+/* ================= PAGE NOS PROJETS ================= */
+
+.projects-section {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.projects-section h2 {
+    font-size: 32px;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 20px; /* Espace pour l'ancre lors du scroll */
+}
+
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Un peu plus d'espace entre les gros projets */
+}
+
+/* --- La Carte Projet --- */
+.project-card {
+    display: flex;
+    align-items: center;
+    background-color: rgba(30, 30, 30, 0.6);
+    border: 1px solid var(--accent-dark);
+    border-radius: 15px;
+    padding: 30px; /* Plus de padding pour respirer */
+    color: var(--text-main);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    border-color: var(--accent-light);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+    background-color: rgba(40, 40, 40, 0.8);
+}
+
+/* Alternance des projets (comme pour les membres) */
+.project-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.project-card:nth-child(even) .project-info {
+    text-align: right;
+}
+
+/* Image du projet (logo, bannière miniature...) */
+.project-image {
+    width: 250px; /* Plus large qu'un avatar */
+    height: auto;
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 10px; /* Coins légèrement arrondis, pas de cercle complet */
+    flex-shrink: 0;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+}
+
+.project-info {
+    padding: 0 40px;
+    flex-grow: 1;
+}
+
+.project-info h3 {
+    color: var(--white);
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.project-info p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* --- Tags (Participants, infos complémentaires) --- */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Pour inverser l'ordre des tags quand le texte est à droite */
+.project-card:nth-child(even) .project-tags {
+    justify-content: flex-end;
+}
+
+.tag-label {
+    font-size: 14px;
+    color: var(--accent-light);
+    font-weight: 600;
+}
+
+.tag {
+    background-color: rgba(110, 107, 91, 0.2); /* Couleur accent-dark très transparente */
+    border: 1px solid var(--accent-dark);
+    color: var(--white);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* --- Bouton d'action (ex: vers la page Esport) --- */
+.action-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: var(--accent-dark);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 10px;
+}
+
+.action-btn:hover {
+    background-color: var(--accent-light);
+    transform: translateY(-2px);
+}
+
+/* ================= RESPONSIVE MOBILES ================= */
+@media screen and (max-width: 768px) {
+    .project-card, .project-card:nth-child(even) {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 15px;
+    }
+    
+    .project-card:nth-child(even) .project-info {
+        text-align: center;
+    }
+
+    .project-card:nth-child(even) .project-tags {
+        justify-content: center;
+    }
+
+    .project-tags {
+        justify-content: center;
+    }
+
+    .project-image {
+        margin-bottom: 25px;
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .project-info {
+        padding: 0;
+    }
+}
