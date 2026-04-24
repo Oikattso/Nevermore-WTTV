@@ -1,0 +1,176 @@
+/* ================= IMPORT POLICE FINAL FANTASY ================= */
+@font-face {
+    font-family: 'FinalFantasy';
+    /* On utilise maintenant le fichier .otf et le format opentype */
+    src: url('./fonts/finalf.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; 
+}
+/* ================= BACKGROUND ANIME "CIEL" ET BASES ================= */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    
+    font-family: 'Inter', sans-serif;
+    color: white;
+
+    /* LE FOND ANIMÉ */
+    background-image: url('./images/akafond.png');
+    background-repeat: repeat; /* Permet à l'image de se répéter comme une mosaïque si besoin */
+    
+    /* LA CORRECTION EST ICI : 200% force l'image à être 2x plus grande que l'écran */
+    background-size: 200%; 
+    
+    background-position: 0% 0%; 
+    
+    /* J'ai réduit à 60s pour que tu voies tout de suite que ça bouge. Tu pourras remettre 180s si c'est trop rapide ! */
+    animation: slowSkyScroll 180s linear infinite; 
+}
+
+/* On ajoute un voile bleu profond pour garder l'ambiance FF et la lisibilité du texte */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Dégradé éthéré au centre */
+    background: radial-gradient(circle at 50% 50%, rgba(0, 162, 255, 0.2) 0%, rgba(1, 8, 23, 0.7) 70%);
+    z-index: -1; /* Derrière le contenu */
+}
+
+/* Animation du défilement du ciel */
+@keyframes slowSkyScroll {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; } /* Va lentement en bas à droite */
+    100% { background-position: 0% 0%; }    /* Reviens */
+}
+
+/* ================= EFFET DE CHARGEMENT ================= */
+.loader {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #010817;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease;
+}
+
+.loader.fade-out {
+    opacity: 0;
+}
+
+.loader-logo {
+    width: 150px;
+    animation: crystal-pulse 2s infinite;
+    filter: drop-shadow(0 0 15px rgba(0, 191, 255, 0.8));
+}
+
+@keyframes crystal-pulse {
+    0% { transform: scale(0.95); filter: drop-shadow(0 0 10px rgba(0, 191, 255, 0.5)); }
+    50% { transform: scale(1); filter: drop-shadow(0 0 25px rgba(0, 255, 255, 1)); }
+    100% { transform: scale(0.95); filter: drop-shadow(0 0 10px rgba(0, 191, 255, 0.5)); }
+}
+
+/* ================= CONTAINER PROFIL ================= */
+.profile-container {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    padding: 40px 20px;
+    
+    /* MODIFICATIONS ICI : On force la police FF et les MAJUSCULES sur tout le profil */
+    font-family: 'FinalFantasy', serif;
+    text-transform: uppercase; /* Contourne le problème des lettres manquantes dans le .ttf */
+}
+
+/* Logo croppé avec halo lumineux bleu/blanc */
+.logo-circle {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(173, 216, 230, 0.8);
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.5);
+    background-color: #001a4d;
+}
+
+.logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-header h1 {
+    font-size: 48px;
+    color: #ffffff;
+    letter-spacing: 3px;
+    /* Effet de lueur titres FF */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 191, 255, 0.8), 0 0 30px rgba(0, 100, 255, 0.6);
+    margin-bottom: 40px;
+    font-weight: normal;
+}
+
+/* ================= BLOCS "CRISTAL" ================= */
+.links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ff-link {
+    text-decoration: none;
+    padding: 18px 30px;
+    font-size: 26px;
+    letter-spacing: 2px;
+    color: #ffffff;
+    
+    /* Effet Verre/Cristal */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 150, 255, 0.15) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    
+    /* Bordures lumineuses taillées */
+    border: 1px solid rgba(173, 216, 230, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 4px;
+    
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 191, 255, 0.2);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 15px rgba(0, 191, 255, 0.8);
+    
+    transition: all 0.3s ease;
+}
+
+.ff-link:hover {
+    transform: translateY(-3px) scale(1.02);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 191, 255, 0.3) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 25px rgba(0, 191, 255, 0.5), inset 0 0 20px rgba(0, 191, 255, 0.4);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(0, 191, 255, 1);
+}
+
+/* ================= PROTECTION DU MENU ================= */
+/* On force le menu latéral à garder la police classique et à NE PAS être en MAJUSCULES */
+#sidebar, .sidebar-header, .nav-links, .nav-links a {
+    font-family: 'Inter', sans-serif !important;
+    text-transform: none !important;
+}
+
+/* Ajustement pour mobile */
+@media (max-width: 480px) {
+    .profile-header h1 { font-size: 36px; }
+    .ff-link { font-size: 20px; padding: 15px; }
+}
+
+/* FORCER LA POLICE SUR LES TEXTES SPÉCIFIQUES */
+.profile-header h1, .ff-link {
+    font-family: 'FinalFantasy', sans-serif !important;
+    text-transform: uppercase !important; /* Force l'utilisation des majuscules qui existent dans le fichier .ttf */
+}

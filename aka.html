@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page en construction | Nevermore</title>
+    <title>Aka | Nevermore</title>
     
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style-wip.css">
+    <link rel="stylesheet" href="style-aka.css">
 </head>
 <body>
+
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <img src="./images/logosolo/aka.png" alt="Loading..." class="loader-logo">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
 
     <nav id="sidebar" class="sidebar">
         <div class="sidebar-header">
@@ -32,28 +39,30 @@
         </button>
     </header>
 
-    <main class="wip-container">
-            
-            <div class="wip-graphics-group">
-                <div class="logo-circle-wip">
-                    <img src="./images/logosolo/aka.png" alt="Logo du membre">
-                </div>
-                
-                <div class="wip-illustration">
-                    <img src="./images/wiplogo.png" alt="Work in Progress">
-                </div>
+    <main class="profile-container">
+        <div class="profile-header">
+            <div class="logo-circle">
+                <img src="./images/logosolo/aka.png" alt="Aka Logo">
             </div>
-            
-            <h1>Work In Progress</h1>
-            <p class="wip-text">Le design personnalisé de cette page est en cours de création par notre équipe (ou plutôt, on attend qu'ils se décident sur les couleurs !).</p>
-            
-            <div class="redirect-section">
-                <p>En attendant, retrouvez cette personne ici :</p>
-                <a href="https://www.twitch.tv/zzz_aka" target="_blank" class="wip-btn">Visiter sa chaîne</a>
-            </div>
+            <h1>Aka</h1>
+        </div>
 
-        </main>
+        <div class="links-list">
+            <a href="https://discord.gg/YFxH5eFVAk" target="_blank" class="ff-link">Discord</a>
+            <a href="https://www.twitch.tv/zzz_aka" target="_blank" class="ff-link">Twitch</a>
+            <a href="https://www.youtube.com/channel/Akashinosuke" target="_blank" class="ff-link">YouTube</a>
+        </div>
+    </main>
 
     <script src="./script.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.classList.add('fade-out');
+                setTimeout(() => { loader.style.display = 'none'; }, 1000);
+            }, 1500); 
+        });
+    </script>
 </body>
 </html>
