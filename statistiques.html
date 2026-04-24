@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Les statistiques et l'évolution de la WebTV Nevermore.">
+    <title>Statistiques | Nevermore</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <nav id="sidebar" class="sidebar" aria-label="Menu principal">
+        <div class="sidebar-header">
+            <img src="./images/collectif/logo.png" alt="Nevermore Logo" class="sidebar-logo">
+            <button id="close-btn" class="close-btn" aria-label="Fermer le menu">&times;</button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">L'accueil</a></li>
+            <li><a href="membres.html">Nos Membres</a></li>
+            <li><a href="projets.html">Nos Projets</a></li>
+            <li><a href="agenda.html">Notre Agenda</a></li>
+            <li><a href="contact.html">Nos Réseaux & Contact</a></li>
+            <li><a href="soutien.html">Nous soutenir</a></li>
+        </ul>
+    </nav>
+    <div id="overlay" class="overlay"></div>
+
+    <header class="header-transparent">
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Ouvrir le menu">
+            <img src="./images/collectif/logo.png" alt="Nevermore Logo" class="logo-btn-image">
+        </button>
+    </header>
+
+    <main id="main-content">
+        
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Statistiques</h1>
+                <p>
+                    Le projet WebTV de Nevermore est tout frais (Avril 2026) ! <br>
+                    Pour l'instant, les compteurs sont à zéro, mais c'est ici que vous pourrez suivre notre évolution et notre croissance au fil des mois.
+                </p>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="support-grid">
+                <div class="support-card">
+                    <h3 style="font-size: 36px; color: #9146FF; margin-bottom: 5px;">0</h3>
+                    <p style="font-weight: 600; text-transform: uppercase;">Heures de stream</p>
+                    <p style="font-size: 13px;">(Le compteur tourne bientôt !)</p>
+                </div>
+                
+                <div class="support-card">
+                    <h3 style="font-size: 36px; color: #FF0000; margin-bottom: 5px;">0</h3>
+                    <p style="font-weight: 600; text-transform: uppercase;">Vidéos YouTube</p>
+                    <p style="font-size: 13px;">(En cours de montage...)</p>
+                </div>
+
+                <div class="support-card">
+                    <h3 style="font-size: 36px; color: var(--accent-light); margin-bottom: 5px;">10</h3>
+                    <p style="font-weight: 600; text-transform: uppercase;">Membres Actifs</p>
+                    <p style="font-size: 13px;">(Et prêts à en découdre !)</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section" style="margin-bottom: 80px;">
+            <h2 style="text-align: center; color: var(--white); margin-bottom: 30px;">Visibilité & Objectifs (Vues)</h2>
+            
+            <div class="chart-container">
+                <canvas id="viewsChart"></canvas>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <nav class="footer-links">
+            <a href="mentions-legales.html">Mentions légales</a>
+            <a href="kit-presse.html">Kit Presse</a>
+            <a href="statistiques.html" class="active">Statistiques</a>
+            <a href="valeurs.html">Nos Valeurs</a>
+        </nav>
+        <p class="copyright">&copy; 2026 Nevermore Collectif. Tous droits réservés.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+    
+    <script>
+        // On cible la zone de dessin (le canvas)
+        const ctx = document.getElementById('viewsChart').getContext('2d');
+
+        // On crée le graphique
+        const viewsChart = new Chart(ctx, {
+            type: 'bar', // Type de graphique (barres)
+            data: {
+                labels: ['Twitch', 'YouTube', 'TikTok', 'X (Twitter)'], // Les réseaux
+                datasets: [{
+                    label: 'Objectifs de vues - Premier mois',
+                    // ICI TU POURRAS CHANGER LES CHIFFRES QUAND TU AURAS DES VUES !
+                    data: [30, 50, 1000, 100], 
+                    backgroundColor: [
+                        'rgba(145, 70, 255, 0.7)',  // Violet Twitch
+                        'rgba(255, 0, 0, 0.7)',     // Rouge YouTube
+                        'rgba(0, 242, 254, 0.7)',   // Bleu TikTok
+                        'rgba(255, 255, 255, 0.7)'  // Blanc Twitter
+                    ],
+                    borderColor: [
+                        '#9146FF',
+                        '#FF0000',
+                        '#00f2fe',
+                        '#ffffff'
+                    ],
+                    borderWidth: 1,
+                    borderRadius: 5 // Arrondit le haut des barres
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, // Permet au graphique de bien remplir la boîte
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#ede8ca' // Couleur du texte de légende
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: '#94917b' }, // Couleur des chiffres verticaux
+                        grid: { color: 'rgba(110, 107, 91, 0.2)' } // Lignes de fond discrètes
+                    },
+                    x: {
+                        ticks: { color: '#ede8ca', font: { weight: 'bold' } }, // Couleur des noms des réseaux
+                        grid: { display: false } // Cache les lignes verticales
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
