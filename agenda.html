@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-width=1.0">
+    <meta name="description" content="Le planning de la WebTV Nevermore. Retrouvez notre grille de la semaine et nos événements spéciaux à venir.">
+    <title>Notre Agenda | Nevermore</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav id="sidebar" class="sidebar" aria-label="Menu principal">
+        <div class="sidebar-header">
+            <img src="./images/collectif/logo.png" alt="Nevermore Logo" class="sidebar-logo">
+            <button id="close-btn" class="close-btn" aria-label="Fermer le menu">&times;</button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">L'accueil</a></li>
+            <li><a href="membres.html">Nos Membres</a></li>
+            <li><a href="projets.html">Nos Projets</a></li>
+            <li><a href="agenda.html" class="active">Notre Agenda</a></li>
+            <li><a href="contact.html">Nos Réseaux & Contact</a></li>
+            <li><a href="soutien.html">Nous soutenir</a></li>
+        </ul>
+    </nav>
+    <div id="overlay" class="overlay"></div>
+
+    <header class="header-transparent">
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Ouvrir le menu">
+            <img src="./images/collectif/logo.png" alt="Nevermore Logo" class="logo-btn-image">
+        </button>
+    </header>
+
+    <main id="main-content">
+        
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Notre Agenda</h1>
+                <p>
+                    Ne ratez aucun de nos lives ! Retrouvez ci-dessous nos événements spéciaux à venir et notre planning de diffusion hebdomadaire régulier.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#evenements" class="anchor-link">Événements Spéciaux</a>
+                    <a href="#planning-semaine" class="anchor-link">Grille de la Semaine</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="evenements" class="agenda-section">
+            <h2>Événements à venir</h2>
+            <p style="text-align: center; color: var(--accent-light); margin-bottom: 30px;">
+                Tournois esport, streams caritatifs, lancements de projets ou soirées spéciales.
+            </p>
+            
+            <div class="calendar-container">
+                <iframe src="https://calendar.google.com/calendar/embed?height=400&wkst=1&ctz=Europe%2FBrussels&showPrint=0&showTitle=0&showNav=0&showCalendars=0&showTabs=0&showTz=0&mode=AGENDA&src=MzM2ZDVkNGM2ZjNhZGNlMWNjODdlZDBjYjA2Mzk5MDdjYjQzODhjNjllNTBmMDE5NjAxMzIwMTIzMmY3MGNmNEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%233f51b5" style="border-width:0" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </section>
+
+        <section id="planning-semaine" class="agenda-section" style="margin-bottom: 80px;">
+            <h2>Grille de la Semaine</h2>
+            <p style="text-align: center; color: var(--accent-light); margin-bottom: 30px;">
+                Notre programme régulier, mis à jour toutes les semaines.
+            </p>
+            
+            <div class="calendar-container large-calendar">
+                <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FBrussels&showPrint=0&showTz=0&showCalendars=0&showTabs=0&showNav=0&showTitle=0&mode=WEEK&src=NWZhZDFlYzMzOTZmNzQ0ZGNjY2UxM2Y3NGYxZWE1YzcyM2RiZDdkODQ2Mjg0ZWE0MTE2ZGM3YTFjNDdmYWVkM0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%239e69af" style="border-width:0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <nav class="footer-links">
+            <a href="mentions-legales.html">Mentions légales</a>
+            <a href="kit-presse.html">Kit Presse</a>
+            <a href="statistiques.html">Statistiques</a>
+            <a href="chartes-valeurs.html">Chartes graphiques & Nos Valeurs</a>
+        </nav>
+        <p class="copyright">&copy; 2026 Nevermore Collectif. Tous droits réservés.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
