@@ -986,3 +986,27 @@ html {
     object-fit: contain;
     filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
 }
+
+/* ================= PAGE STATISTIQUES ================= */
+
+.stats-section {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.chart-container {
+    background-color: rgba(30, 30, 30, 0.6);
+    border: 1px solid var(--accent-dark);
+    border-radius: 15px;
+    padding: 30px;
+    height: 400px; /* Fixe la hauteur pour que le graphique puisse se dimensionner dedans */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+
+@media screen and (max-width: 768px) {
+    .chart-container {
+        height: 300px; /* Un peu moins haut sur mobile */
+        padding: 15px;
+    }
+}
