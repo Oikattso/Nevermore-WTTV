@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactez le collectif Nevermore pour vos projets, partenariats ou questions.">
+    <title>Contact | Nevermore</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav id="sidebar" class="sidebar" aria-label="Menu principal">
+        <div class="sidebar-header">
+            <img src="./images/collectif/logo.png" alt="Nevermore Logo" class="sidebar-logo">
+            <button id="close-btn" class="close-btn" aria-label="Fermer le menu">&times;</button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">L'accueil</a></li>
+            <li><a href="membres.html">Nos Membres</a></li>
+            <li><a href="projets.html">Nos Projets</a></li>
+            <li><a href="agenda.html">Notre Agenda</a></li>
+            <li><a href="contact.html" class="active">Nos Réseaux & Contact</a></li>
+            <li><a href="soutien.html">Nous soutenir</a></li>
+        </ul>
+    </nav>
+    <div id="overlay" class="overlay"></div>
+
+    <header class="header-transparent">
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Ouvrir le menu">
+            <img src="./images/collectif/logo.png" alt="Nevermore Logo" class="logo-btn-image">
+        </button>
+    </header>
+
+    <main id="main-content">
+        
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Contact & Réseaux</h1>
+                <p>
+                    Une question, une proposition de partenariat ou simplement envie de discuter ? <br>
+                    Retrouvez-nous sur nos réseaux ou envoyez-nous un message directement.
+                </p>
+            </div>
+        </section>
+
+        <section class="contact-container">
+            <div class="contact-grid">
+                
+                <div class="contact-info">
+                    <h2>Nos Réseaux</h2>
+                    <p class="handle-main">Retrouvez-nous partout : <strong>@NevermoreWebTTV</strong></p>
+                    
+                    <div class="social-links-grid">
+                        <a href="https://twitch.tv/NevermoreWebTTV" target="_blank" class="social-card">Twitch</a>
+                        <a href="https://youtube.com/@NevermoreWebTTV" target="_blank" class="social-card">YouTube</a>
+                        <a href="https://x.com/NevermoreWebTTV" target="_blank" class="social-card">X (Twitter)</a>
+                        <a href="https://tiktok.com/@NevermoreWebTTV" target="_blank" class="social-card">TikTok</a>
+                    </div>
+
+                    <div class="direct-contact">
+                        <h3>Liens directs</h3>
+                        <a href="https://discord.gg/PYN48rc7Qy" target="_blank" class="direct-link">
+                            <strong>Discord :</strong> Rejoindre la communauté
+                        </a>
+                        <a href="mailto:NevermoreTTV@protonmail.com" class="direct-link">
+                            <strong>Email :</strong> NevermoreTTV@protonmail.com
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <h2>Nous écrire</h2>
+                    <form action="https://formspree.io/f/ton-identifiant" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Votre nom / pseudo</label>
+                            <input type="text" id="name" name="name" placeholder="Ex: Jean Castex" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Votre e-mail</label>
+                            <input type="email" id="email" name="email" placeholder="Ex: contact@exemple.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Objet</label>
+                            <select id="subject" name="subject">
+                                <option value="partenariat">Demande de partenariat</option>
+                                <option value="esport">Question sur l'Esport</option>
+                                <option value="technique">Problème technique</option>
+                                <option value="autre">Autre demande</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Dites-nous tout..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Envoyer le message</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <nav class="footer-links">
+            <a href="mentions-legales.html">Mentions légales</a>
+            <a href="kit-presse.html">Kit Presse</a>
+            <a href="statistiques.html">Statistiques</a>
+            <a href="chartes-valeurs.html">Chartes graphiques & Nos Valeurs</a>
+        </nav>
+        <p class="copyright">&copy; 2026 Nevermore Collectif. Tous droits réservés.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
