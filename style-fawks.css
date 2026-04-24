@@ -1,0 +1,128 @@
+/* ================= IMPORT POLICE PERSONNALISÉE ================= */
+@font-face {
+    font-family: 'StrawMilky';
+    src: url('./fonts/StrawMilky.otf') format('opentype');
+}
+
+/* ================= BACKGROUND ET BASES ================= */
+body {
+    background: url('./images/bannerback.png') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif; /* Par défaut */
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ================= EFFET DE CHARGEMENT ================= */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease;
+}
+
+.loader.fade-out {
+    opacity: 0;
+}
+
+.loader-logo {
+    width: 150px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    50% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+/* ================= CONTAINER PROFIL ================= */
+.profile-container {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* Logo croppé en cercle parfait */
+.logo-circle {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden; /* C'est ici que le crop se fait */
+    border: 4px solid #4ae9f3;
+    box-shadow: 0 0 20px rgba(74, 233, 243, 0.5);
+}
+
+.logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* S'assure que l'image remplit le cercle sans se déformer */
+}
+
+.profile-header h1 {
+    font-family: 'StrawMilky', cursive;
+    font-size: 40px;
+    color: #FFF;
+    text-shadow: 2px 2px 0px #Ef09C0;
+    margin-bottom: 40px;
+}
+
+/* ================= BLOCS NUAGES ================= */
+.links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cloud-link {
+    text-decoration: none;
+    padding: 18px 30px;
+    font-family: 'StrawMilky', sans-serif;
+    font-size: 24px;
+    color: #2C1647;
+    
+    /* Contour blanc du texte */
+    text-shadow: 
+        -1px -1px 0 #FFF,  
+         1px -1px 0 #FFF,
+        -1px  1px 0 #FFF,
+         1px  1px 0 #FFF;
+
+    /* Dégradé demandé */
+    background: linear-gradient(135deg, #3068f0, #4ae9f3, #Ef09C0);
+    
+    /* Forme "Nuage" (Border-radius asymétrique) */
+    border-radius: 50px 20px 50px 20px;
+    
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.cloud-link:hover {
+    transform: scale(1.05) rotate(-2deg);
+    box-shadow: 0 8px 25px rgba(239, 9, 192, 0.4);
+    filter: brightness(1.1);
+}
+
+/* Ajustement pour mobile */
+@media (max-width: 480px) {
+    .cloud-link {
+        font-size: 20px;
+        padding: 15px;
+    }
+}
