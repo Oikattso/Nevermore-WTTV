@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Soutenez le collectif indépendant Nevermore. Abonnements Twitch, boutique de produits dérivés et dons directs.">
+    <title>Nous Soutenir | Nevermore</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav id="sidebar" class="sidebar" aria-label="Menu principal">
+        <div class="sidebar-header">
+            <img src="./images/collectif/logo.png" alt="Nevermore Logo" class="sidebar-logo">
+            <button id="close-btn" class="close-btn" aria-label="Fermer le menu">&times;</button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">L'accueil</a></li>
+            <li><a href="membres.html">Nos Membres</a></li>
+            <li><a href="projets.html">Nos Projets</a></li>
+            <li><a href="agenda.html">Notre Agenda</a></li>
+            <li><a href="contact.html">Nos Réseaux & Contact</a></li>
+            <li><a href="soutien.html" class="active">Nous soutenir</a></li>
+        </ul>
+    </nav>
+    <div id="overlay" class="overlay"></div>
+
+    <header class="header-transparent">
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Ouvrir le menu">
+            <img src="./images/collectif/logo.png" alt="Nevermore Logo" class="logo-btn-image">
+        </button>
+    </header>
+
+    <main id="main-content">
+        
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Nous Soutenir</h1>
+                <p>
+                    Nevermore est un projet 100% indépendant, porté par notre passion et nos propres moyens. 
+                    Votre présence est déjà notre plus belle récompense, mais si vous souhaitez nous donner un petit coup de pouce supplémentaire, voici comment faire !
+                </p>
+                <p style="margin-top: 15px; font-weight: 600; color: var(--white);">
+                    Un immense MERCI à toutes celles et ceux qui feront le choix de soutenir la WebTV ! ❤️
+                </p>
+            </div>
+        </section>
+
+        <section class="support-section">
+            <div class="support-grid">
+                
+                <div class="support-card">
+                    <div class="support-icon">💜</div>
+                    <h3>S'abonner sur Twitch</h3>
+                    <p>
+                        C'est le moyen le plus simple de nous soutenir au quotidien. En vous abonnant à notre chaîne Twitch (Sub), vous profitez de nos emotes personnalisées, de badges évolutifs, et vous regardez nos streams sans aucune publicité ! 
+                        <br><br><em>(N'oubliez pas, si vous avez Amazon Prime, vous avez un sub gratuit par mois !)</em>
+                    </p>
+                    <a href="https://twitch.tv/NevermoreWebTTV" target="_blank" class="action-btn">Rejoindre les Subs</a>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-icon">👕</div>
+                    <h3>Boutique & Goodies</h3>
+                    <p>
+                        Portez les couleurs de Nevermore ! <br><br>
+                        <em>Note de transparence :</em> Notre structure étant encore petite, nous passons pour le moment par l'offre de produits dérivés automatisée de Streamlabs. C'est ce qui nous permet de vous proposer des articles de qualité sans avoir à gérer des stocks immenses depuis notre salon !
+                    </p>
+                    <a href="LIEN_DE_TA_BOUTIQUE_STREAMLABS" target="_blank" class="action-btn">Voir la Boutique</a>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-icon">☕</div>
+                    <h3>Don Direct (Tips)</h3>
+                    <p>
+                        Si vous préférez nous faire un don ponctuel direct pour nous aider à améliorer notre matériel, financer nos serveurs (comme celui de Minecraft) ou simplement nous payer un café après un long stream, c'est par ici. L'intégralité des dons est réinvestie dans les projets du collectif.
+                    </p>
+                    
+                    <div id="donate-button-container" style="margin-top: 10px;">
+                        <div id="donate-button"></div>
+                        <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
+                        <script>
+                        PayPal.Donation.Button({
+                            env:'production',
+                            hosted_button_id:'SCKVYQV8H8G5Q',
+                            image: {
+                                src:'https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif',
+                                alt:'Bouton Faites un don avec PayPal',
+                                title:'PayPal - The safer, easier way to pay online!',
+                            }
+                        }).render('#donate-button');
+                        </script>
+                    </div>
+                </div>
+        </section>
+
+        <section class="disclaimer-section">
+            <div class="disclaimer-box">
+                <h3>⚠️ Un petit mot sur la responsabilité</h3>
+                <p>
+                    Nous tenons énormément à notre communauté. Ne vous mettez <strong>jamais</strong> dans la difficulté financière pour nous soutenir. Regarder nos streams, chatter avec nous ou partager nos vidéos est un soutien gratuit et déjà inestimable.
+                </p>
+                <ul>
+                    <li>Les dons et abonnements ne sont pas en échange d'un service et sont <strong>non remboursables</strong>.</li>
+                    <li>L'argent utilisé doit obligatoirement vous appartenir.</li>
+                    <li>Si vous êtes <strong>mineur</strong>, assurez-vous d'avoir l'accord explicite du titulaire de la carte bancaire ou du compte PayPal avant toute transaction.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <nav class="footer-links">
+            <a href="mentions-legales.html">Mentions légales</a>
+            <a href="kit-presse.html">Kit Presse</a>
+            <a href="statistiques.html">Statistiques</a>
+            <a href="chartes-valeurs.html">Chartes graphiques & Nos Valeurs</a>
+        </nav>
+        <p class="copyright">&copy; 2026 Nevermore Collectif. Tous droits réservés.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
