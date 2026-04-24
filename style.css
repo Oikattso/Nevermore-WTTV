@@ -730,3 +730,237 @@ html {
     /* Sur mobile, la vue "Semaine" de Google Agenda peut être très serrée. 
        L'utilisateur devra scroller horizontalement ou tourner son téléphone. */
 }
+
+/* ================= PAGE CONTACT ================= */
+
+.contact-container {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Deux colonnes égales */
+    gap: 60px;
+    align-items: start;
+}
+
+.contact-info h2, .contact-form-wrapper h2 {
+    font-size: 28px;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+/* --- Réseaux Sociaux --- */
+.handle-main {
+    margin-bottom: 25px;
+    color: var(--accent-light);
+}
+
+.social-links-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.social-card {
+    display: block;
+    padding: 15px;
+    background-color: rgba(30, 30, 30, 0.6);
+    border: 1px solid var(--accent-dark);
+    border-radius: 8px;
+    color: var(--text-main);
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.social-card:hover {
+    background-color: var(--accent-dark);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* --- Liens directs --- */
+.direct-link {
+    display: block;
+    margin-bottom: 15px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.direct-link:hover {
+    color: var(--white);
+}
+
+.direct-link strong {
+    color: var(--accent-light);
+}
+
+/* --- Formulaire --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: var(--accent-light);
+    font-weight: 600;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    padding: 12px;
+    background-color: rgba(30, 30, 30, 0.8);
+    border: 1px solid var(--accent-dark);
+    border-radius: 6px;
+    color: var(--white);
+    font-size: 15px;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-light);
+}
+
+.submit-btn {
+    padding: 15px;
+    background-color: var(--accent-light);
+    border: none;
+    border-radius: 6px;
+    color: var(--bg-main);
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* ================= RESPONSIVE MOBILES ================= */
+@media screen and (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: 1fr; /* On passe sur une seule colonne */
+        gap: 40px;
+    }
+}
+
+/* ================= PAGE SOUTIEN ================= */
+
+.support-section {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.support-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
+    gap: 30px;
+}
+
+.support-card {
+    background-color: rgba(30, 30, 30, 0.6);
+    border: 1px solid var(--accent-dark);
+    border-radius: 12px;
+    padding: 40px 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.support-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-light);
+    background-color: rgba(40, 40, 40, 0.8);
+}
+
+.support-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.support-card h3 {
+    color: var(--white);
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.support-card p {
+    font-size: 15px;
+    color: var(--text-main);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    flex-grow: 1; /* Pousse le bouton toujours tout en bas, même si les textes n'ont pas la même taille */
+}
+
+/* --- Encart de Responsabilité (Disclaimer) --- */
+.disclaimer-section {
+    max-width: 800px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+}
+
+.disclaimer-box {
+    background-color: rgba(20, 20, 20, 0.8);
+    border-left: 4px solid var(--accent-light);
+    border-radius: 0 8px 8px 0;
+    padding: 30px;
+}
+
+.disclaimer-box h3 {
+    color: var(--white);
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.disclaimer-box p {
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+.disclaimer-box ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.disclaimer-box li {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--text-main);
+    position: relative;
+    padding-left: 20px;
+}
+
+/* Petite puce personnalisée pour la liste */
+.disclaimer-box li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-dark);
+}
+
+/* ================= RESPONSIVE MOBILES ================= */
+@media screen and (max-width: 900px) {
+    .support-grid {
+        grid-template-columns: 1fr; /* On passe sur 1 seule colonne sur mobile */
+    }
+}
