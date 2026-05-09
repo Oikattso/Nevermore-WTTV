@@ -85,7 +85,7 @@ header {
 
 /* Taille du logo flottant (Accueil) */
 .logo-btn-image {
-    width: 120px; /* Au lieu de height 40px. Tu peux monter à 150px si besoin */
+    width: 350px; /* Au lieu de height 40px. Tu peux monter à 150px si besoin */
     height: auto; /* Garde les bonnes proportions */
     display: block;
 }
