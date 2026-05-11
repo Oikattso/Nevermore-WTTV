@@ -56,7 +56,6 @@ header {
     position: absolute; /* Reste en haut du défilement */
     top: 0;
     left: 0;
-    width: auto; /* Ne couvre pas toute la largeur */
     padding: 20px 5%; /* Conserve un rembourrage pour le logo */
     z-index: 1001; /* Doit être au-dessus du contenu et de l'overlay */
 }
