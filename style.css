@@ -61,18 +61,19 @@ header {
 }
 
 .hamburger-btn {
-    background: none;
+    background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0;
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Ajout d'une transition fluide */
-    position: fixed; 
-    top: 20px; 
-    left: 5%; 
+    padding: 10px 15px;
+    z-index: 1000;
+    /* On s'assure que le bouton ne prend pas toute la largeur s'il n'en a pas besoin */
+    display: inline-flex; 
+    align-items: center;
+    max-width: 100%;
 }
 
-.hamburger-btn:hover {
-    opacity: 0.8;
+.hamburger-btn:hover .logo-btn-image {
+    transform: scale(1.05); /* Petit zoom au survol pour le dynamisme */
 }
 
 /* NOUVEAU : La classe ajoutée par le JS pour faire disparaître le bouton */
@@ -84,12 +85,23 @@ header {
 
 /* Taille du logo flottant (Accueil) */
 .logo-btn-image {
-    width: 350px; /* Au lieu de height 40px. Tu peux monter à 150px si besoin */
-    height: auto; /* Garde les bonnes proportions */
-    display: block;
+    /* La solution magique pour ne plus jamais écraser l'image */
+    width: 100%;
+    max-width: 350px; /* Tu peux augmenter ce chiffre si tu veux le bouton plus grand sur PC */
+    height: auto; /* MAINTIENT LES PROPORTIONS INTACTES */
+    object-fit: contain; 
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5)); /* Petit effet d'ombre sympa */
+    transition: transform 0.3s ease;
 }
 
 /* Le texte .logo distinct est supprimé du HTML, donc inutile de styliser. */
+
+@media screen and (max-width: 768px) {
+    .logo-btn-image {
+        /* Sur mobile, on limite un peu la taille pour que ça ne prenne pas la moitié de l'écran */
+        max-width: 200px; 
+    }
+}
 
 /* ================= MENU LATÉRAL (SIDEBAR) ================= */
 .sidebar {
