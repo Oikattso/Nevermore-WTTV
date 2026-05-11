@@ -53,11 +53,13 @@ header {
 
 /* Classe spécifique pour le nouvel en-tête flottant et transparent. */
 .header-transparent {
-    position: absolute; /* Reste en haut du défilement */
+    position: fixed; /* C'est la ligne magique qui fixe l'élément à l'écran */
     top: 0;
     left: 0;
-    padding: 20px 5%; /* Conserve un rembourrage pour le logo */
-    z-index: 1001; /* Doit être au-dessus du contenu et de l'overlay */
+    width: 100%;
+    padding: 10px 20px; /* Ajuste l'espacement autour du bouton si besoin */
+    z-index: 1000; /* Le maintient au-dessus de la page */
+    pointer-events: none; /* Laisse passer les clics à travers la "vitre" */
 }
 
 .hamburger-btn {
@@ -66,10 +68,10 @@ header {
     cursor: pointer;
     padding: 10px 15px;
     z-index: 1000;
-    /* On s'assure que le bouton ne prend pas toute la largeur s'il n'en a pas besoin */
     display: inline-flex; 
     align-items: center;
     max-width: 100%;
+    pointer-events: auto;
 }
 
 .hamburger-btn:hover .logo-btn-image {
@@ -113,7 +115,7 @@ header {
     background-color: var(--bg-main);
     border-right: 1px solid var(--accent-dark);
     transition: left 0.4s ease-in-out;
-    z-index: 1000;
+    z-index: 2000;
     display: flex;
     flex-direction: column;
 }
